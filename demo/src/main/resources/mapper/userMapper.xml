@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserMapper">
+    <select id="getUserList" resultType="com.example.demo.domain.User">
+        select * from user
+    </select>
+
+    <select id="getUserSearchList" parameterType="String" resultType="com.example.demo.domain.User">
+        select * from user where id like concat('%', #{searchId}, '%')
+    </select>
+
+    <insert id="addUser" parameterType="com.example.demo.domain.User" useGeneratedKeys="true" keyProperty="userNumber">
+        insert into user values (null, #{id}, #{password}, #{name}, #{phoneNumber})
+    </insert>
+
+    <delete id="deleteUser" parameterType="Long">
+        delete from user where user_number = #{userNumber}
+    </delete>
+</mapper>
