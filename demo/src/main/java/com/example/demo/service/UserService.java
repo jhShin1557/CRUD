@@ -18,6 +18,10 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
+    public User getUser(Integer userNumber) {
+        return userMapper.getUser(userNumber);
+    }
+
     public List<User> userList() {
         return userMapper.getUserList();
     }
@@ -28,6 +32,10 @@ public class UserService {
 
     public void addUser(User user) {
         userMapper.addUser(user);
+    }
+
+    public void modifyUser(User user) {
+        userMapper.modifyUser(user);
     }
 
     public void deleteUser(Long userNumber) {

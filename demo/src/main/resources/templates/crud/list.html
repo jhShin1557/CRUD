@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
+
         table {
             border-collapse: collapse;
             border: 1px solid darkgray;
@@ -22,6 +23,10 @@
 </head>
 <body>
 <a href="/">홈으로</a>
+<form action="/searchList" method="get" style="margin-bottom: 1em; margin-top: 1em;">
+    <input type="text" style="width: 200px; margin-bottom: 0.1em;" name="searchId" autocomplete="off">
+    <button type="submit" class="btn btn-primary">아이디 검색</button>
+</form>
     <table>
         <tr id="bold">
             <td>고유번호</td>
@@ -33,7 +38,7 @@
         </tr>
         <tr th:each="user : ${users}">
             <td th:text="${user.userNumber}"></td>
-            <td th:text="${user.id}"></td>
+            <td><a th:href="@{/userInfo/{userNumber}(userNumber=${user.userNumber})}"><span th:text="${user.id}"></span></a></td>
             <td th:text="${user.password}"></td>
             <td th:text="${user.name}"></td>
             <td th:text="${user.phoneNumber}"></td>
@@ -46,12 +51,8 @@
         </tr>
     </table>
     <br>
-    <form action="/searchList" method="get">
-        <input type="text" style="width: 200px; margin-bottom: 0.1em;" name="searchId">
-        <button type="submit" class="btn btn-primary">아이디 검색</button>
-    </form>
-    <form action="/addUser">
-        <button type="submit" class="btn btn-info">회원 추가</button>
-    </form>
+<form action="/addUser">
+    <button type="submit" class="btn btn-info">회원 추가</button>
+</form>
 </body>
 </html>

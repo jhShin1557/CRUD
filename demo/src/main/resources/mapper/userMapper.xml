@@ -2,6 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.UserMapper">
+    <select id="getUser" parameterType="Integer" resultType="com.example.demo.domain.User">
+        select * from user where user_number = #{userNumber}
+    </select>
+
+    <update id="modifyUser" parameterType="com.example.demo.domain.User">
+        update user set id = #{id}, password = #{password}, name = #{name}, phone_number = #{phoneNumber} where user_number = #{userNumber}
+    </update>
+
     <select id="getUserList" resultType="com.example.demo.domain.User">
         select * from user
     </select>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+</head>
+<body>
+<form th:action="@{/userModify}" method="post" class="form-control">
+  <h1>회원 정보</h1>
+  고유번호 : <input type="text" name="userNumber" th:value="${user.userNumber}" readonly style="background-color: lightgray"><br>
+  아이디 : <input type="text" name="id" th:value="${user.id}"><br>
+  비밀번호 : <input type="text" name="password" th:value="${user.password}"><br>
+  이름 : <input type="text" name="name" th:value="${user.name}"><br>
+  전화번호 : <input type="text" name="phoneNumber" th:value="${user.phoneNumber}"><br>
+  <button type="submit" class="btn btn-primary">저장</button>
+</form>
+</body>
+</html>

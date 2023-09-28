@@ -7,12 +7,15 @@ import java.util.List;
 
 @Mapper
 public interface UserMapper {
+    User getUser(Integer userNumber);
 
     List<User> getUserList();
 
     List<User> getUserSearchList(String searchId);
 
     void addUser(User user);
+
+    void modifyUser(User user);
 
     void deleteUser(Long userNumber);
 }
