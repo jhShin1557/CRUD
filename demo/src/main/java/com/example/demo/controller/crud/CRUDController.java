@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.example.demo.controller.crud;
 
 import com.example.demo.domain.User;
 import com.example.demo.service.UserService;
@@ -29,19 +29,19 @@ public class CRUDController {
     public String userList(Model model) {
         List<User> users = userService.userList();
         model.addAttribute("users", users);
-        return "list";
+        return "crud/list";
     }
 
     @GetMapping("/searchList")
     public String userConditionList(Model model, String searchId) {
         List<User> users = userService.userSearchList(searchId);
         model.addAttribute("users", users);
-        return "list";
+        return "crud/list";
     }
 
     @GetMapping("/addUser")
     public String addUserForm() {
-        return "addUser";
+        return "crud/addUser";
     }
 
     @PostMapping("/addUser")

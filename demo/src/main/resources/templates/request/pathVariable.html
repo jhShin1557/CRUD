@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 1px solid gray;
+        }
+
+        td {
+            border: 1px solid gray;
+            padding: 1em;
+        }
+    </style>
+</head>
+<body>
+<a href="/">홈으로</a>
+<table>
+    <tr>
+        <td>번호</td>
+        <td>아이디</td>
+        <td>텍스트</td>
+    </tr>
+    <tr th:each="data : ${dataList}">
+        <td th:text="${data.num}"></td>
+        <td><a th:href="@{/dataInfo/{num}(num = ${data.num})}"><span th:text="${data.id}"></span></a></td>
+        <td th:text="${data.text}"></td>
+    </tr>
+</table>
+</body>
+</html>

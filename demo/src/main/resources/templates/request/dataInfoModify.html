@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+</head>
+<body>
+<form th:action="@{/dataModify}" class="form-control" method="post">
+  <h2>PathVariable 연습</h2>
+  번호 : <input type="text" name="num" th:value="${data.num}" readonly style="background-color: lightgray"><br>
+  아이디 : <input type="text" name="id" th:value="${data.id}"><br>
+  텍스트 : <input type="text" name="text" th:value="${data.text}"><br>
+  <button type="submit" class="btn btn-primary">저장</button>
+</form>
+</body>
+</html>
