@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button class="btn btn-primary" id="text">text전달</button>
+<div id="createText"></div>
+<button class="btn btn-danger" id="json">json전달</button>
+<div id="createJson"></div>
+<script>
+$(document).ready(function() {
+
+  $("#text").click(function() {
+    var text = "hello world!!!";
+
+    $.ajax({
+      url: "/sendText",
+      type: "POST",
+      contentType: "text/plain",
+      data: text,
+      success: function(response) {
+        alert("text 전달 성공");
+        $("#createText").append(response);
+      }
+    })
+  })
+})
+</script>
+<script>
+  $(document).ready(function() {
+    $("#json").click(function() {
+      var json = {
+        num: 1,
+        id: "jongha",
+        text: "종하"
+      }
+
+      $.ajax({
+        type: "POST",
+        url: "/sendJson1",
+        contentType: "application/json",
+        data: JSON.stringify(json),
+        success: function(response) {
+          alert("JSON 전달 성공");
+          $("#createJson").html(response.num + "<br>" + response.id + "<br>" + response.text);
+        }
+      })
+    })
+  })
+</script>
+</body>
+</html>
